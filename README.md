@@ -1,47 +1,38 @@
-# 🌐 Networking
+# 🖥️ Proxmox Network
 
-This section documents the network that connects the homelab together.
+The primary server is an HP ProLiant DL380p Gen8 running Proxmox VE.
 
-The aim is to build the network properly from the start rather than simply plugging everything into the same network and hoping for the best.
+The current Proxmox network configuration has been verified directly from the host.
 
-The network needs to support the normal home environment as well as the Proxmox server, iLO management, Home AI and the cybersecurity lab.
+## Current Configuration
 
----
+| Item | Value | Status |
+|---|---|---|
+| Hostname | `pve` | 🟢 Confirmed |
+| Physical NIC | `nic7` | 🟢 Confirmed |
+| NIC State | UP | 🟢 Confirmed |
+| Proxmox Bridge | `vmbr0` | 🟢 Confirmed |
+| Bridge State | UP | 🟢 Confirmed |
+| Management IP | `192.168.0.100/24` | 🟢 Confirmed |
+| Default Gateway | `192.168.0.1` | 🟢 Confirmed |
+| Bridge Port | `nic7` | 🟢 Confirmed |
+| STP | Off | 🟢 Confirmed |
+| Bridge Forward Delay | `0` | 🟢 Confirmed |
+| VLAN Aware | Not currently enabled | 🟡 Planned |
+| VLAN Trunk | Not currently configured | 🟡 Planned |
 
-# 🏠 Network Overview
-
-The basic physical layout is:
+## Current Network
 
 ```text
-                         INTERNET
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │  Ubiquiti UX7 │
-                    │    Router     │
-                    └───────┬───────┘
-                            │
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │ Managed Switch│
-                    └───────┬───────┘
-                            │
-              ┌─────────────┼─────────────┐
-              │             │             │
-              ▼             ▼             ▼
-        DL380p Server    Standalone PC   Standalone PC
-              │
-       ┌──────┴──────┐
-       │             │
-       ▼             ▼
-    Proxmox          iLO
-       │
-       │
- ┌─────┴─────────────────────────────┐
- │                                   │
- ▼                                   ▼
-VMs / Containers                  Home AI
-                                       │
-                                       ▼
-                                  Tesla P40
+                    Ubiquiti UX7
+                         │
+                         │
+                       nic7
+                         │
+                         ▼
+                       vmbr0
+                         │
+                 192.168.0.100/24
+                         │
+                         ▼
+                    Proxmox Host
