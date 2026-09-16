@@ -1,33 +1,36 @@
-# ⚙️ Proxmox
+# 💾 Storage
 
-This section documents the Proxmox side of the homelab.
+This section documents the storage used by the homelab.
 
-Proxmox is effectively the foundation that sits between the physical server and the virtual machines and containers running inside the lab.
+Storage is something I want to get right early in the build because pretty much everything else depends on it.
 
-The aim is to build it properly from the beginning, document the configuration and make the environment easy to rebuild if something goes wrong.
+Proxmox needs somewhere to store virtual machines and containers, the cybersecurity lab will generate data, and the Home AI environment will eventually need somewhere to keep models and other files.
+
+The aim is to keep the storage simple, reliable and easy to recover.
 
 ---
 
-# 🖥️ The Proxmox Host
+# 🧱 Storage Architecture
 
-The Proxmox host is running on the HP ProLiant DL380p Gen8.
+At a high level, storage will look something like this:
 
 ```text
-┌───────────────────────────────────────┐
-│          HP DL380p Gen8               │
-│                                       │
-│             Proxmox VE                │
-│                                       │
-├───────────────────────────────────────┤
-│                                       │
-│  Virtual Machines                     │
-│                                       │
-│  Containers                           │
-│                                       │
-│  GPU Passthrough                      │
-│                                       │
-│  Virtual Networking                   │
-│                                       │
-│  Storage                              │
-│                                       │
-└───────────────────────────────────────┘
+                    DL380p Gen8
+                         │
+                         ▼
+                    Proxmox VE
+                         │
+              ┌──────────┼──────────┐
+              │          │          │
+              ▼          ▼          ▼
+             VM        ISO       Backup
+           Storage    Storage    Storage
+              │
+       ┌──────┴──────────┐
+       │                 │
+       ▼                 ▼
+ Cybersecurity        Home AI
+      VMs               VM
+                          │
+                          ▼
+                       Models
