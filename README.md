@@ -1,12 +1,22 @@
 # 🏠 HomeLab AI & Security
 
-Welcome to my homelab.
+Welcome to my AI driven & designed homelab. This build is designed built and coded mostly by AI (ChatGPT)
+I have signed up on a monthly basis to deliver this project. All being well it wont be the fourth road bridge of projects
+
+From here on out, where possible, the pages and actual build will be created by AI (me doing the copy / pasting for the best part)
+
+
+Regards..
+
+
+
+
 
 This is a project I'm building to bring together **virtualisation, networking, cybersecurity and local AI** into one environment.
 
 The idea is pretty simple:
 
-Take some enterprise hardware, put it to work, and build a home environment where I can learn, experiment, test things and actually understand how all the different pieces fit together.
+Take some enterprise hardware I obtained when it was being binned, put it to work, and build a home environment where I can learn, experiment, test things and actually understand how all the different pieces fit together.
 
 It's a work in progress.
 
