@@ -1,74 +1,99 @@
-# 🏭 OT / ICS LAB
+# 🏭 OT / ICS Lab
 
-[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [🛠️ Configuration](../../tree/configuration) | [🗺️ Roadmap](../../tree/roadmap)
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🛠️ Configuration](../../tree/configuration)
 
-[🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery) | [📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
+[🗺️ Roadmap](../../tree/roadmap) | [🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery)
+
+[📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
 # 🎯 Purpose
 
-The OT/ICS section defines the industrial control system environment within the homelab.
+This page documents the planned OT/ICS environment within the homelab.
 
-The purpose is to create a realistic but completely isolated environment in which OT/ICS technologies, protocols, monitoring and security controls can be studied and tested safely.
+The objective is to build a controlled environment that can be used to:
 
-The OT environment will be treated differently from the normal IT environment.
+- Learn OT/ICS security
+- Simulate industrial environments
+- Investigate OT protocols
+- Generate realistic OT telemetry
+- Test defensive monitoring
+- Test SIEM detection
+- Test network segmentation
+- Perform controlled security exercises
+- Develop OT SOC analyst skills
+- Integrate OT telemetry with the wider security lab
 
-The design principle is:
-
-> **IT and OT must be separated, controlled and observable.**
+The OT environment will remain isolated from the normal home network and will be introduced only after the underlying network and security architecture has been implemented.
 
 ---
 
-# 🚦 Current OT/ICS Status
+# ⚠️ Current Status
 
-| Area | Status |
+| Component | Status |
 |---|---|
 | OT/ICS architecture | 🟡 Planned |
 | OT VLAN | 🟡 Planned |
+| OT firewall policy | 🟡 Planned |
 | OT DMZ | 🟡 Planned |
-| OT firewall rules | 🟡 Planned |
-| PLC | 🔴 Not deployed |
-| HMI | 🔴 Not deployed |
-| Engineering Workstation | 🔴 Not deployed |
-| Historian | 🔴 Not deployed |
-| OT monitoring | 🔴 Not deployed |
-| OT network sensor | 🔴 Not deployed |
+| PLC simulation | 🟡 Planned |
+| HMI simulation | 🟡 Planned |
+| Engineering workstation | 🟡 Planned |
+| SCADA | 🟡 Planned |
+| Historian | 🟡 Planned |
+| OT network monitoring | 🟡 Planned |
 | Wazuh integration | 🟡 Planned |
-| IT/OT boundary monitoring | 🟡 Planned |
 | OT attack simulation | 🟡 Planned |
-| ICS detection engineering | 🟡 Planned |
-| MITRE ATT&CK for ICS testing | 🟡 Planned |
+| OT detection engineering | 🟡 Planned |
+
+**No OT/ICS systems are currently documented as deployed.**
 
 ---
 
-# 🏗️ OT/ICS Architecture
+# 🏗️ High-Level OT Architecture
 
-The planned environment separates normal IT systems from the industrial environment.
+The intended architecture is:
 
 ```text
-                         HOME NETWORK
-                              │
-                              ▼
-                       ┌─────────────┐
-                       │   FIREWALL  │
-                       └──────┬──────┘
-                              │
-                 ┌────────────┴────────────┐
-                 │                         │
-                 ▼                         ▼
-             IT NETWORK                OT DMZ
-                 │                         │
-                 │                    Controlled
-                 │                    communication
-                 │                         │
-                 │                         ▼
-                 │                    OT NETWORK
-                 │                         │
-                 │              ┌──────────┼──────────┐
-                 │              │          │          │
-                 │              ▼          ▼          ▼
-                 │             HMI        PLC      Historian
-                 │
-                 ▼
-             IT Systems
+                         HOME / IT NETWORK
+                                │
+                                │
+                         ┌──────▼──────┐
+                         │   FIREWALL  │
+                         └──────┬──────┘
+                                │
+                                │ Controlled Traffic
+                                ▼
+                         ┌─────────────┐
+                         │   OT DMZ    │
+                         │    VLAN     │
+                         └──────┬──────┘
+                                │
+                         Controlled Access
+                                │
+                                ▼
+                         ┌─────────────┐
+                         │ OT FIREWALL │
+                         └──────┬──────┘
+                                │
+                                ▼
+                         ┌─────────────┐
+                         │  OT NETWORK │
+                         │    VLAN     │
+                         └──────┬──────┘
+                                │
+              ┌─────────────────┼─────────────────┐
+              │                 │                 │
+              ▼                 ▼                 ▼
+           PLC /             HMI /          Engineering
+         Controller         Operator          Workstation
+                           Station
+              │                 │                 │
+              └─────────────────┼─────────────────┘
+                                │
+                                ▼
+                           SCADA / Server
+                                │
+                                ▼
+                           Historian
