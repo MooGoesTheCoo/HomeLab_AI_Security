@@ -1,36 +1,39 @@
 # 💾 Storage
 
-This section documents the storage used by the homelab.
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🛠️ Configuration](../../tree/configuration)
 
-Storage is something I want to get right early in the build because pretty much everything else depends on it.
+[🗺️ Roadmap](../../tree/roadmap) | [🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery)
 
-Proxmox needs somewhere to store virtual machines and containers, the cybersecurity lab will generate data, and the Home AI environment will eventually need somewhere to keep models and other files.
-
-The aim is to keep the storage simple, reliable and easy to recover.
+[📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
-# 🧱 Storage Architecture
+# 🎯 Purpose
 
-At a high level, storage will look something like this:
+This page documents the storage architecture for the homelab.
+
+The storage design covers:
+
+- Physical disks
+- RAID
+- Smart Array controller
+- Logical drives
+- Proxmox storage
+- VM storage
+- Home AI storage
+- Wazuh storage
+- OT/ICS storage
+- Testing Lab storage
+- Backup storage
+- Future storage expansion
+
+The objective is to provide reliable storage while maintaining sufficient capacity and performance for the planned workloads.
+
+---
+
+# 🖥️ Storage Host
+
+The primary storage system is located inside the:
 
 ```text
-                    DL380p Gen8
-                         │
-                         ▼
-                    Proxmox VE
-                         │
-              ┌──────────┼──────────┐
-              │          │          │
-              ▼          ▼          ▼
-             VM        ISO       Backup
-           Storage    Storage    Storage
-              │
-       ┌──────┴──────────┐
-       │                 │
-       ▼                 ▼
- Cybersecurity        Home AI
-      VMs               VM
-                          │
-                          ▼
-                       Models
+HP ProLiant DL380p Gen8
