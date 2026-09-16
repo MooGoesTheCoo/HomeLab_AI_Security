@@ -1,58 +1,70 @@
 # 🛡️ Cybersecurity
 
-This section documents the cybersecurity environment within the homelab.
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🛠️ Configuration](../../tree/configuration)
 
-The purpose of this part of the project is to create a realistic environment where security monitoring, detection engineering, incident investigation and security testing can be carried out safely.
+[🗺️ Roadmap](../../tree/roadmap) | [🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery)
 
-The lab will use **Wazuh** as the permanent SIEM/security monitoring platform.
-
-The intention is not simply to install security tools.
-
-I want to build an environment where I can generate realistic security events, collect the telemetry, investigate what happened and then improve the detections.
+[📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
-# 🎯 What is the Security Lab?
+# 🎯 Purpose
 
-The cybersecurity environment will provide a controlled place to experiment with security.
+This page documents the cybersecurity architecture for the homelab.
 
-It will eventually contain:
+The environment is being designed as both:
 
-- Windows systems
-- Linux systems
-- Wazuh
-- Security monitoring
-- Endpoint telemetry
-- Network telemetry
-- Attack simulation
+1. A functional homelab infrastructure platform
+2. A realistic cybersecurity training and testing environment
+
+The security architecture will therefore support:
+
+- Defensive security
+- SOC operations
+- SIEM engineering
 - Detection engineering
+- Threat hunting
+- Endpoint monitoring
+- Network security
+- Vulnerability management
+- Incident response
 - Purple-team testing
-- Incident investigation
-
-The environment should be isolated from the normal home network.
+- OT/ICS security
+- MITRE ATT&CK
+- Security automation
 
 ---
 
-# 🏗️ High-Level Architecture
+# 🧭 Security Architecture
 
-The basic concept is:
+The overall security model is based on layered controls.
 
 ```text
-                         Proxmox
-                            │
-              ┌─────────────┼─────────────┐
-              │             │             │
-              ▼             ▼             ▼
-          Windows VM     Linux VM       Wazuh
-              │             │             │
-              │             │             │
-              └─────────────┼─────────────┘
+                         INTERNET
                             │
                             ▼
-                     Security Telemetry
+                     Router / Firewall
                             │
                             ▼
-                         Wazuh
+                    Network Segmentation
                             │
-                            ▼
-                    Alerts / Analysis
+        ┌───────────────────┼───────────────────┐
+        │                   │                   │
+        ▼                   ▼                   ▼
+   Management             Users              Security
+        │                   │                   │
+        │                   │                   ▼
+        │                   │                 Wazuh
+        │                   │                   │
+        ▼                   ▼                   ▼
+     Proxmox              Systems          Security Events
+        │
+   ┌────┼───────────────┐
+   │    │               │
+   ▼    ▼               ▼
+  VMs   Containers      GPU / AI
+   │
+   ├───────────────┐
+   │               │
+   ▼               ▼
+Testing Lab       OT/ICS
