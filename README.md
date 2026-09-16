@@ -1,65 +1,80 @@
-# 🏗️ Architecture
+# 🏗️ Homelab Architecture
 
-This section documents how the different parts of the homelab fit together.
+This page provides the high-level architecture for the entire homelab.
 
-The other branches describe individual parts of the project.
+The purpose of this page is to show how the different parts of the project fit together.
 
-This branch brings them together.
+It is the **map of the homelab**.
 
-The objective is to have a clear picture of:
-
-- The physical hardware
-- The network
-- Proxmox
-- Storage
-- Virtual machines
-- GPU
-- Home AI
-- Wazuh
-- Monitoring
-- Backup
-- OT/ICS
-- Security testing
+Detailed hardware, Proxmox, networking, VLANs, Wazuh, Home AI and OT/ICS configuration are documented on their individual pages.
 
 ---
 
-# 🎯 The Big Picture
+# 🎯 Project Overview
 
-The homelab is being built as a small private infrastructure and cybersecurity environment.
+The homelab is being built as a self-contained environment for:
 
-At a high level:
+- Cybersecurity learning
+- SOC development
+- Blue Team activities
+- Red Team testing
+- OT/ICS security
+- Security monitoring
+- SIEM and log analysis
+- Local AI workloads
+- Virtualisation
+- Network security experimentation
+- Infrastructure and automation testing
+
+The design is intended to allow different environments to operate independently while still allowing controlled communication between them.
+
+---
+
+# 🧱 Core Architecture
+
+The overall architecture is built around four major layers:
 
 ```text
-                         INTERNET
+┌─────────────────────────────────────────────────────────┐
+│                    PHYSICAL LAYER                       │
+│                                                         │
+│  HP DL380p Gen8                                        │
+│  Ubiquiti UX7                                          │
+│  Managed Switch                                        │
+│  Standalone PCs                                        │
+│  iLO                                                    │
+└───────────────────────────┬─────────────────────────────┘
                             │
                             ▼
-                         UX7
+┌─────────────────────────────────────────────────────────┐
+│                  VIRTUALISATION LAYER                   │
+│                                                         │
+│  Proxmox VE                                             │
+│  Virtual Machines                                      │
+│  Containers                                             │
+│  Virtual Networking                                    │
+│  GPU Passthrough                                       │
+└───────────────────────────┬─────────────────────────────┘
                             │
                             ▼
-                     MANAGED SWITCH
+┌─────────────────────────────────────────────────────────┐
+│                     NETWORK LAYER                       │
+│                                                         │
+│  VLANs                                                  │
+│  Trunking                                               │
+│  Firewall / Routing                                     │
+│  Network Segmentation                                   │
+│  Management Networks                                    │
+└───────────────────────────┬─────────────────────────────┘
                             │
                             ▼
-                       DL380p Gen8
-                            │
-                         Proxmox
-                            │
-          ┌─────────────────┼─────────────────┐
-          │                 │                 │
-          ▼                 ▼                 ▼
-       Security          Home AI          Test Lab
-        / Wazuh             │                 │
-                            ▼                 │
-                         Tesla P40            │
-                                              │
-                              ┌───────────────┘
-                              │
-                              ▼
-                           OT / ICS
-
-
-
-
-
-**UX7 → switch → `nic7` → `vmbr0` → VLANs → VMs**
-
-and then we can configure the trunk safely.
+┌─────────────────────────────────────────────────────────┐
+│                  WORKLOAD / SECURITY LAYER              │
+│                                                         │
+│  Wazuh                                                  │
+│  Blue Team                                              │
+│  Red Team                                               │
+│  OT / ICS                                               │
+│  Home AI                                                │
+│  Security Testing                                      │
+└─────────────────────────────────────────────────────────┘
