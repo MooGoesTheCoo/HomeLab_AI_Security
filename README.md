@@ -1,32 +1,60 @@
-# 📊 Monitoring
+# 📊 Monitoring & Observability
 
-This section documents how the homelab will be monitored.
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🛠️ Configuration](../../tree/configuration)
 
-The idea is simple:
+[🗺️ Roadmap](../../tree/roadmap) | [🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery)
 
-> If something breaks, I want to know about it before I have to go looking for it.
-
-The monitoring environment will cover the physical server, Proxmox, virtual machines, storage, networking, GPU and important services.
-
-Security monitoring through Wazuh is documented separately in the cybersecurity section.
+[📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
-# 🎯 What Are We Monitoring?
+# 🎯 Purpose
 
-The homelab contains quite a few different layers.
+This page documents the monitoring and observability architecture for the homelab.
+
+The monitoring design will provide visibility across:
+
+- Physical hardware
+- Proxmox
+- Virtual machines
+- Containers
+- Network infrastructure
+- Security infrastructure
+- Wazuh
+- OT/ICS systems
+- Home AI infrastructure
+- Storage
+- GPU resources
+- System availability
+- Security events
+
+The objective is to provide a single documented monitoring architecture while keeping security monitoring separate from general infrastructure monitoring where appropriate.
+
+---
+
+# 🧭 Monitoring Architecture
+
+The planned monitoring architecture is:
 
 ```text
-                    Homelab
-                       │
-       ┌───────────────┼────────────────┐
-       │               │                │
-       ▼               ▼                ▼
-    Hardware         Proxmox         Network
-       │               │                │
-       ▼               ▼                ▼
-     Server            VMs             UX7
-     Disks          Containers        Switch
-     CPU               │
-     RAM               ▼
-     GPU             Services
+                         HOMELAB
+                            │
+        ┌───────────────────┼───────────────────┐
+        │                   │                   │
+        ▼                   ▼                   ▼
+   Infrastructure       Network             Security
+        │                   │                   │
+        │                   │                   ▼
+        │                   │                 Wazuh
+        │                   │                   │
+        ▼                   ▼                   ▼
+     Proxmox             Network          Security Events
+        │                Devices
+        │
+   ┌────┼────────┐
+   │    │        │
+   ▼    ▼        ▼
+  VMs   CTs     GPU
+   │
+   ▼
+ Applications
