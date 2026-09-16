@@ -1,33 +1,44 @@
 # ⚙️ Proxmox
 
-This section documents the Proxmox side of the homelab.
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🛠️ Configuration](../../tree/configuration)
 
-Proxmox is effectively the foundation that sits between the physical server and the virtual machines and containers running inside the lab.
+[🗺️ Roadmap](../../tree/roadmap) | [🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery)
 
-The aim is to build it properly from the beginning, document the configuration and make the environment easy to rebuild if something goes wrong.
+[📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
-# 🖥️ The Proxmox Host
+# 🎯 Purpose
 
-The Proxmox host is running on the HP ProLiant DL380p Gen8.
+This page documents the Proxmox VE configuration and architecture for the homelab.
+
+Proxmox is the virtualisation layer between the physical HP DL380p Gen8 hardware and the virtual machines and containers that will provide the homelab services.
+
+The objective is to build Proxmox in a controlled, documented and reproducible manner.
 
 ```text
-┌────────────────────────────────────────────┐
-│              HP DL380p Gen8                │
-│                                            │
-│                Proxmox VE                  │
-│                                            │
-├────────────────────────────────────────────┤
-│                                            │
-│  Virtual Machines                          │
-│                                            │
-│  Containers                                │
-│                                            │
-│  GPU Passthrough                           │
-│                                            │
-│  Virtual Networking                        │
-│                                            │
-│  Storage                                   │
-│                                            │
-└────────────────────────────────────────────┘
+┌─────────────────────────────────────────────┐
+│              HP DL380p Gen8                 │
+│                                             │
+│  2 × Intel Xeon E5-2650 v2                  │
+│  16 Physical Cores / 32 Logical CPUs       │
+│  256 GB RAM                                 │
+│                                             │
+│  P420i RAID-5                               │
+│  ~1.6 TB Logical Storage                   │
+│                                             │
+│  10 × Network Interfaces                   │
+│                                             │
+├─────────────────────────────────────────────┤
+│                                             │
+│                 Proxmox VE                  │
+│                                             │
+├─────────────────────────────────────────────┤
+│                                             │
+│  Virtual Machines                           │
+│  Containers                                 │
+│  Virtual Networking                         │
+│  Storage                                    │
+│  GPU Passthrough                            │
+│                                             │
+└─────────────────────────────────────────────┘
