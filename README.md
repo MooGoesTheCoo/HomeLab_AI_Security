@@ -1,47 +1,33 @@
-# 🌐 Networking
+# ⚙️ Proxmox
 
-This section documents the network that connects the homelab together.
+This section documents the Proxmox side of the homelab.
 
-The aim is to build the network properly from the start rather than simply plugging everything into the same network and hoping for the best.
+Proxmox is effectively the foundation that sits between the physical server and the virtual machines and containers running inside the lab.
 
-The network needs to support the normal home environment as well as the Proxmox server, iLO management, Home AI and the cybersecurity lab.
+The aim is to build it properly from the beginning, document the configuration and make the environment easy to rebuild if something goes wrong.
 
 ---
 
-# 🏠 Network Overview
+# 🖥️ The Proxmox Host
 
-The basic physical layout is:
+The Proxmox host is running on the HP ProLiant DL380p Gen8.
 
 ```text
-                         INTERNET
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │  Ubiquiti UX7 │
-                    │    Router     │
-                    └───────┬───────┘
-                            │
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │ Managed Switch│
-                    └───────┬───────┘
-                            │
-              ┌─────────────┼─────────────┐
-              │             │             │
-              ▼             ▼             ▼
-        DL380p Server    Standalone PC   Standalone PC
-              │
-       ┌──────┴──────┐
-       │             │
-       ▼             ▼
-    Proxmox          iLO
-       │
-       │
- ┌─────┴─────────────────────────────┐
- │                                   │
- ▼                                   ▼
-VMs / Containers                  Home AI
-                                       │
-                                       ▼
-                                  Tesla P40
+┌───────────────────────────────────────┐
+│          HP DL380p Gen8               │
+│                                       │
+│             Proxmox VE                │
+│                                       │
+├───────────────────────────────────────┤
+│                                       │
+│  Virtual Machines                     │
+│                                       │
+│  Containers                           │
+│                                       │
+│  GPU Passthrough                      │
+│                                       │
+│  Virtual Networking                   │
+│                                       │
+│  Storage                              │
+│                                       │
+└───────────────────────────────────────┘
