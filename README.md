@@ -1,34 +1,47 @@
-# 🖥️ Virtual Machines & Containers
+# 🖥️ Virtual Machines
 
-This section documents the virtual machines and containers that will run inside the homelab.
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🛠️ Configuration](../../tree/configuration)
 
-The idea behind the lab is to use the physical server as a shared platform rather than having a separate physical machine for every job.
+[🗺️ Roadmap](../../tree/roadmap) | [🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery)
 
-Proxmox gives me the ability to create different environments, give them the resources they need and keep them separated from each other.
+[📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
-# 🏠 The Idea
+# 🎯 Purpose
 
-The physical server is the foundation.
+This page documents the virtual machine architecture for the homelab.
 
-Proxmox sits on top of the hardware.
+The objective is to define how workloads will be distributed across the Proxmox host while maintaining:
 
-Everything else runs inside it.
+- Security
+- Network segmentation
+- Resource isolation
+- Monitoring
+- Backup capability
+- Recovery capability
+- Scalability
+- Clear workload separation
 
+The virtual machine architecture will evolve as individual services are deployed and tested.
 
-                    HP DL380p Gen8
-                           │
-                           ▼
-                      Proxmox VE
-                           │
-          ┌────────────────┼────────────────┐
-          │                │                │
-          ▼                ▼                ▼
-      Home AI           Wazuh          Security Lab
-         VM                VM               VMs
-          │                │                │
-          ▼                ▼                ▼
-       Tesla P40       Security          Windows
-       GPU Workload    Monitoring          Linux
-                                         Testing
+---
+
+# 🖥️ Proxmox Host
+
+All virtual machines will initially run on the primary Proxmox host.
+
+```text
+HP ProLiant DL380p Gen8
+          │
+          ▼
+      Proxmox VE
+          │
+    ┌─────┼──────────────────────────────┐
+    │     │              │               │
+    ▼     ▼              ▼               ▼
+ Infra  Security       Home AI         Testing
+  VMs      VMs           VM              VMs
+                         │
+                         ▼
+                    Tesla P40
