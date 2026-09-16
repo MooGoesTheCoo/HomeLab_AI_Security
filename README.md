@@ -1,57 +1,74 @@
-# 🏭 OT / ICS Security
+# 🏭 OT / ICS LAB
 
-This section documents the Operational Technology (OT) and Industrial Control Systems (ICS) environment planned for the homelab.
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [🛠️ Configuration](../../tree/configuration) | [🗺️ Roadmap](../../tree/roadmap)
 
-The goal is to create a safe environment where I can learn how industrial systems work and, more importantly, how they can be monitored and protected.
-
-This environment will eventually connect the technical knowledge from the cybersecurity lab with OT/ICS-specific security concepts.
+[🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery) | [📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
-# 🎯 Why OT / ICS?
+# 🎯 Purpose
 
-Traditional IT environments and industrial environments have different priorities.
+The OT/ICS section defines the industrial control system environment within the homelab.
 
-In a normal IT environment, confidentiality and availability are often major concerns.
+The purpose is to create a realistic but completely isolated environment in which OT/ICS technologies, protocols, monitoring and security controls can be studied and tested safely.
 
-In an industrial environment, safety and continuous operation can be critical.
+The OT environment will be treated differently from the normal IT environment.
 
-A security test that is acceptable against a disposable Windows VM may not be acceptable against a real industrial control system.
+The design principle is:
 
-That's why this lab will provide a controlled environment for learning and experimentation.
+> **IT and OT must be separated, controlled and observable.**
 
 ---
 
-# 🏭 What is OT?
+# 🚦 Current OT/ICS Status
 
-Operational Technology refers to systems used to monitor and control physical processes.
+| Area | Status |
+|---|---|
+| OT/ICS architecture | 🟡 Planned |
+| OT VLAN | 🟡 Planned |
+| OT DMZ | 🟡 Planned |
+| OT firewall rules | 🟡 Planned |
+| PLC | 🔴 Not deployed |
+| HMI | 🔴 Not deployed |
+| Engineering Workstation | 🔴 Not deployed |
+| Historian | 🔴 Not deployed |
+| OT monitoring | 🔴 Not deployed |
+| OT network sensor | 🔴 Not deployed |
+| Wazuh integration | 🟡 Planned |
+| IT/OT boundary monitoring | 🟡 Planned |
+| OT attack simulation | 🟡 Planned |
+| ICS detection engineering | 🟡 Planned |
+| MITRE ATT&CK for ICS testing | 🟡 Planned |
 
-Examples include:
+---
 
-- Industrial control systems
-- PLCs
-- RTUs
-- HMIs
-- SCADA systems
-- Industrial networks
-- Sensors
-- Actuators
-- Engineering workstations
+# 🏗️ OT/ICS Architecture
 
-A simplified industrial environment might look like:
+The planned environment separates normal IT systems from the industrial environment.
 
 ```text
-                 Enterprise IT
-                       │
-                       │
-                IT / OT Boundary
-                       │
-                       ▼
-                  OT Network
-                       │
-          ┌────────────┼────────────┐
-          │            │            │
-          ▼            ▼            ▼
-        SCADA         HMI          PLC
-                                     │
-                              Physical Process
+                         HOME NETWORK
+                              │
+                              ▼
+                       ┌─────────────┐
+                       │   FIREWALL  │
+                       └──────┬──────┘
+                              │
+                 ┌────────────┴────────────┐
+                 │                         │
+                 ▼                         ▼
+             IT NETWORK                OT DMZ
+                 │                         │
+                 │                    Controlled
+                 │                    communication
+                 │                         │
+                 │                         ▼
+                 │                    OT NETWORK
+                 │                         │
+                 │              ┌──────────┼──────────┐
+                 │              │          │          │
+                 │              ▼          ▼          ▼
+                 │             HMI        PLC      Historian
+                 │
+                 ▼
+             IT Systems
