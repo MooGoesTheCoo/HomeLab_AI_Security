@@ -58,32 +58,7 @@ At a high level:
 
 
 
-## And update your current-status table
 
-Change the relevant entries to:
-
-| Component | Current Status |
-|---|---|
-| Proxmox DL380p Gen8 | 🟢 Online |
-| Proxmox `vmbr0` | 🟢 Confirmed |
-| Proxmox Management IP | 🟢 `192.168.0.100/24` |
-| Default Gateway | 🟢 `192.168.0.1` |
-| Active NIC | 🟢 `nic7` |
-| Physical NICs | 🟢 10 detected |
-| VLAN-aware `vmbr0` | 🔴 Not configured |
-| VLAN Trunk | 🔴 Not configured |
-| Inter-VLAN Routing | 🔴 Not configured |
-| Firewall Rules | 🔴 Not configured |
-| OT Isolation | 🔴 Not configured |
-| Wazuh Integration | 🔴 Not configured |
-
-### One thing we need to establish before touching Proxmox
-
-We need the **exact managed switch model** and its current configuration.
-
-You previously mentioned the **Ubiquiti USW-Lite-8-PoE**, but we shouldn't assume that's the switch you're actually going to use.
-
-Once we confirm the switch, I'll map:
 
 **UX7 → switch → `nic7` → `vmbr0` → VLANs → VMs**
 
