@@ -42,8 +42,6 @@ The backup strategy will be designed around **recoverability**, not simply keepi
 | VM backup schedule | 🟡 Planned |
 | Container backup schedule | 🟡 Planned |
 | Configuration backup | 🟡 Planned |
-| Off-host backup | 🟡 Planned |
-| Off-site backup | 🟡 Planned |
 | Restore testing | 🟡 Planned |
 | Disaster recovery procedure | 🟡 Planned |
 | Recovery priority matrix | 🟡 Planned |
