@@ -1,55 +1,67 @@
 # 🔐 Access Management
 
-This section documents how access to the homelab is controlled.
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [🛠️ Configuration](../../tree/configuration) | [🗺️ Roadmap](../../tree/roadmap)
 
-The homelab contains several systems that should not be freely accessible to every device or user.
-
-The basic idea is:
-
-> **Only give access where it is needed, and don't make management interfaces unnecessarily accessible.**
-
-This includes physical management such as iLO, virtualisation management through Proxmox, operating systems, network equipment and applications.
+[🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery) | [📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
-# 🎯 What Are We Protecting?
+# 🎯 Purpose
 
-The access-management design covers:
+This page documents how administrative and operational access to the homelab will be controlled.
 
-- Proxmox
-- iLO
-- Ubiquiti UX7
-- Managed switch
-- Virtual machines
-- Linux systems
-- Windows systems
-- Wazuh
-- Home AI
-- OT/ICS systems
-- Backup infrastructure
+The objective is to separate:
+
+- Infrastructure management
+- Network management
+- Security administration
+- VM administration
+- OT/ICS access
+- Red Team access
+- Home AI access
+- User access
+
+The access model will evolve as VLANs and additional systems are deployed.
 
 ---
 
-# 🏗️ Access Architecture
+# 🚦 Current Status
 
-A simplified model is:
+| Area | Current State | Status |
+|---|---|---|
+| Proxmox management | `192.168.0.100/24` | 🟢 Operational |
+| Proxmox hostname | `pve` | 🟢 Confirmed |
+| Proxmox web management | Available on current management network | 🟢 Operational |
+| Proxmox SSH | Available locally | 🟢 Operational |
+| iLO | Present | 🟡 Configuration to be documented |
+| Ubiquiti UX7 | Present | 🟡 Configuration to be documented |
+| Managed switch | Not yet finalised | 🟡 Planned |
+| Management VLAN | VLAN 10 | 🟡 Planned |
+| Dedicated management network | Not yet implemented | 🟡 Planned |
+| MFA / 2FA | Not yet documented | 🟡 Planned |
+| Central authentication | Not yet implemented | 🟡 Planned |
+| Privileged account separation | To be implemented | 🟡 Planned |
+| OT/ICS access controls | Not yet implemented | 🟡 Planned |
+| Red Team isolation | Not yet implemented | 🟡 Planned |
+
+---
+
+# 🖥️ Current Management Access
+
+The current Proxmox management configuration is:
 
 ```text
-                         HOME NETWORK
-                              │
-                              │
-                         Firewall / UX7
-                              │
-                              ▼
-                       Management VLAN
-                              │
-             ┌────────────────┼────────────────┐
-             │                │                │
-             ▼                ▼                ▼
-          Proxmox            iLO            Switch
-             │
-             │
-      ┌──────┼────────┐
-      │      │        │
-      ▼      ▼        ▼
-    Wazuh  Home AI   Test VMs
+Proxmox Host
+    │
+    ▼
+nic7
+    │
+    ▼
+vmbr0
+    │
+    ▼
+192.168.0.100/24
+    │
+    ▼
+Gateway
+192.168.0.1
