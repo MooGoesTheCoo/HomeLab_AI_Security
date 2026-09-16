@@ -1,278 +1,287 @@
-# 🏠 HomeLab AI & Security
+# 🖥️ Hardware Inventory
 
-Welcome to my homelab.
+This section documents the physical hardware used by the homelab.
 
-This is a project I'm building to bring together **virtualisation, networking, cybersecurity and local AI** into one environment.
+The goal is simple:
 
-The idea is pretty simple:
+> Know exactly what hardware is available before deciding what we are going to run on it.
 
-Take some enterprise hardware, put it to work, and build a home environment where I can learn, experiment, test things and actually understand how all the different pieces fit together.
-
-It's a work in progress.
-
-Things will change.
-
-Things will break.
-
-Some things will probably be rebuilt several times.
-
-That's part of the project.
+Rather than guessing specifications, the actual server configuration will be recorded here as it is discovered.
 
 ---
 
-# 🧭 Project Overview
+# 🖥️ Primary Server
 
-The homelab is being built around a central **Proxmox VE** server with managed networking, dedicated GPU resources and a collection of virtual machines and containers.
-
-The environment will eventually provide separate areas for:
-
-- 🖥️ Infrastructure
-- ⚙️ Proxmox virtualisation
-- 🌐 Networking
-- 💾 Storage and backups
-- 🤖 Home AI
-- 🎮 GPU workloads
-- 🛡️ Cybersecurity
-- 📊 SIEM / monitoring
-- 🧪 Security testing
-- ⚡ Automation
-
-Rather than putting everything into one huge document, each part of the build has its own branch.
+| Item | Details | Status |
+|---|---|---|
+| Manufacturer | HP | 🟢 |
+| Model | DL380p Gen8 | 🟢 |
+| Form Factor | Rack Server | 🟢 |
+| CPU | TBD | 🟡 |
+| CPU Count | TBD | 🟡 |
+| RAM | TBD | 🟡 |
+| Storage | TBD | 🟡 |
+| RAID Controller | TBD | 🟡 |
+| Network | TBD | 🟡 |
+| GPU | Tesla P40 | 🟡 |
+| iLO | iLO | 🟢 |
 
 ---
 
-# 🗺️ Build Sections
+# 🧠 CPU
 
-## 🖥️ Infrastructure
+The exact CPU configuration will be recorded after checking the server.
 
-The physical foundation of the homelab.
+| CPU | Model | Cores | Threads | Frequency | Status |
+|---|---|---:|---:|---:|---|
+| CPU 1 | TBD | TBD | TBD | TBD | 🟡 |
+| CPU 2 | TBD | TBD | TBD | TBD | 🟡 |
 
-This section covers the server hardware, physical layout, iLO management, hardware upgrades and the overall architecture.
+### CPU Checks
 
-➡️ **[Open Infrastructure](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/infrastructure)**
-
----
-
-## ⚙️ Proxmox
-
-The virtualisation platform running the lab.
-
-This section covers the Proxmox installation, configuration, networking, storage, VM management and general host configuration.
-
-➡️ **[Open Proxmox](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/proxmox)**
-
----
-
-## 🌐 Networking
-
-The network that ties everything together.
-
-This includes the Ubiquiti UX7, managed switching, VLANs, firewalling, network segmentation and management networks.
-
-➡️ **[Open Networking](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/networking)**
+- [ ] CPU model confirmed
+- [ ] Number of CPUs confirmed
+- [ ] Physical cores confirmed
+- [ ] Threads confirmed
+- [ ] Base frequency confirmed
+- [ ] Turbo frequency confirmed
+- [ ] Virtualisation support confirmed
 
 ---
 
-## 💾 Storage & Backups
+# 🧠 RAM
 
-Everything related to storing the lab's data.
+The DL380p memory configuration will be recorded here.
 
-This section will cover disks, storage configuration, VM storage, backups, snapshots and recovery.
+| Slot | Size | Type | Speed | Status |
+|---|---:|---|---:|---|
+| DIMM 1 | TBD | TBD | TBD | 🟡 |
+| DIMM 2 | TBD | TBD | TBD | 🟡 |
+| DIMM 3 | TBD | TBD | TBD | 🟡 |
+| DIMM 4 | TBD | TBD | TBD | 🟡 |
+| DIMM 5 | TBD | TBD | TBD | 🟡 |
+| DIMM 6 | TBD | TBD | TBD | 🟡 |
 
-➡️ **[Open Storage](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/storage)**
+Additional DIMMs will be added when identified.
+
+### RAM Checks
+
+- [ ] Total RAM confirmed
+- [ ] DIMM layout confirmed
+- [ ] Memory type confirmed
+- [ ] Memory speed confirmed
+- [ ] Population rules checked
+- [ ] Upgrade capacity identified
 
 ---
 
-## 🖥️ Virtual Machines & Containers
+# 💾 Storage
 
-The systems running inside Proxmox.
+All physical storage will be recorded here.
 
-This section documents the VMs and containers used throughout the lab, including their purpose, resources and configuration.
+| Drive | Model | Capacity | Interface | Bay | Status |
+|---|---|---:|---|---:|---|
+| Drive 1 | TBD | TBD | TBD | TBD | 🟡 |
+| Drive 2 | TBD | TBD | TBD | TBD | 🟡 |
+| Drive 3 | TBD | TBD | TBD | TBD | 🟡 |
+| Drive 4 | TBD | TBD | TBD | TBD | 🟡 |
+| Drive 5 | TBD | TBD | TBD | TBD | 🟡 |
+| Drive 6 | TBD | TBD | TBD | TBD | 🟡 |
+| Drive 7 | TBD | TBD | TBD | TBD | 🟡 |
+| Drive 8 | TBD | TBD | TBD | TBD | 🟡 |
 
-➡️ **[Open Virtual Machines](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/virtual-machines)**
+More drive bays can be added if required.
 
 ---
 
-# 🤖 Home AI
+# 🗄️ RAID Controller
 
-One of the main goals of the project is to build a local AI environment.
+| Item | Value |
+|---|---|
+| Controller | TBD |
+| Firmware | TBD |
+| Cache | TBD |
+| Battery / Flash Backup | TBD |
+| RAID Level | TBD |
+| Logical Drives | TBD |
+| Status | 🟡 |
 
-The aim is to run AI workloads locally using dedicated GPU resources rather than having everything depend on cloud services.
+### RAID Checks
 
-This section will cover:
-
-- Local LLMs
-- AI services
-- Model management
-- GPU acceleration
-- AI applications
-- Private document processing
-- Automation
-- Home AI experiments
-
-➡️ **[Open Home AI](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/home-ai)**
+- [ ] Controller identified
+- [ ] Firmware checked
+- [ ] Cache identified
+- [ ] Battery/FBWC status checked
+- [ ] Physical drives identified
+- [ ] Logical drives identified
+- [ ] RAID configuration documented
 
 ---
 
 # 🎮 GPU
 
-The GPU side of the project.
+The server is intended to support local AI workloads.
 
-The current plan includes NVIDIA Tesla P40 hardware for local AI workloads.
+Current GPU:
 
-This section will document:
+| GPU | Model | VRAM | PCIe | Purpose | Status |
+|---|---|---:|---|---|---|
+| GPU 1 | Tesla P40 | 24 GB | TBD | Home AI | 🟡 |
+| GPU 2 | TBD | TBD | TBD | Future expansion | 🔴 |
 
-- Tesla P40 installation
+A second P40 may be added later.
+
+The final GPU configuration will depend on:
+
+- PCIe slot availability
 - Power requirements
 - Cooling
-- PCIe configuration
-- Proxmox GPU passthrough
-- Driver installation
-- CUDA
-- GPU testing
-- Adding additional GPUs
-
-➡️ **[Open GPU](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/gpu)**
+- GPU passthrough
+- Proxmox compatibility
+- AI workload requirements
 
 ---
 
-# 🛡️ Cybersecurity Lab
+# 🔌 PCIe Slots
 
-A dedicated environment for cybersecurity learning, testing and experimentation.
+The PCIe slot layout will be documented using the actual server configuration.
 
-The idea is to have systems that can generate realistic security telemetry and allow defensive technologies to be tested in a controlled environment.
+| Slot | Type | Width | Current Usage | Device |
+|---|---|---|---|---|
+| PCI-E Slot 1 | PCIe Gen 3 | x16 | In Use | TBD |
+| PCI-E Slot 2 | TBD | TBD | TBD | TBD |
+| PCI-E Slot 3 | TBD | TBD | TBD | TBD |
+| PCI-E Slot 4 | TBD | TBD | TBD | TBD |
+| PCI-E Slot 5 | TBD | TBD | TBD | TBD |
+| PCI-E Slot 6 | TBD | TBD | TBD | TBD |
 
-This section will eventually include:
-
-- Windows systems
-- Linux systems
-- Security monitoring
-- Endpoint telemetry
-- Detection engineering
-- Attack simulation
-- Purple-team testing
-- SOC tooling
-
-➡️ **[Open Cybersecurity](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/cybersecurity)**
+The exact slot configuration will be verified before installing additional GPUs.
 
 ---
 
-# 🔎 Wazuh
+# 🌐 Network Interfaces
 
-Wazuh will be the **permanent SIEM/security monitoring platform** for the homelab.
+| Interface | Model | Speed | MAC | Purpose | Status |
+|---|---|---:|---|---|---|
+| NIC 1 | TBD | TBD | TBD | Management | 🟡 |
+| NIC 2 | TBD | TBD | TBD | VM Traffic | 🟡 |
+| NIC 3 | TBD | TBD | TBD | TBD | 🟡 |
+| NIC 4 | TBD | TBD | TBD | TBD | 🟡 |
 
-This section will document the Wazuh deployment and how it integrates with the rest of the environment.
-
-It will cover:
-
-- Wazuh server
-- Agents
-- Windows monitoring
-- Linux monitoring
-- File integrity monitoring
-- Vulnerability detection
-- Security events
-- Detection rules
-- Dashboards
-- Alerting
-- Testing
-
-➡️ **[Open Wazuh](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/wazuh)**
+Additional interfaces will be documented if present.
 
 ---
 
-# 📊 Monitoring
+# 🔧 Network Adapter / HBA Cards
 
-Keeping an eye on the infrastructure.
+Additional PCIe cards will be documented here.
 
-This section will document the tools used to monitor:
-
-- Proxmox
-- VMs
-- Containers
-- CPU
-- RAM
-- Storage
-- Network
-- GPU
-- Security events
-- System health
-
-➡️ **[Open Monitoring](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/monitoring)**
+| Device | Model | Slot | Purpose | Status |
+|---|---|---|---|---|
+| NIC | TBD | TBD | Network | 🟡 |
+| HBA | TBD | TBD | Storage | 🟡 |
+| Other | TBD | TBD | TBD | 🟡 |
 
 ---
 
-# ⚡ Automation
+# 🖥️ iLO
 
-The less I have to configure manually, the better.
+iLO provides out-of-band management for the server.
 
-This section contains scripts and automation used to deploy, configure and maintain the lab.
+| Item | Value |
+|---|---|
+| iLO Version | TBD |
+| Firmware | TBD |
+| IP Address | TBD |
+| MAC Address | TBD |
+| Dedicated Port | TBD |
+| Shared Port | TBD |
+| Status | 🟡 |
 
-Possible areas include:
+### iLO Checks
 
-- PowerShell
-- Bash
-- Python
-- Proxmox automation
-- VM deployment
-- Configuration
-- Backups
-- Monitoring
-- Security testing
-
-➡️ **[Open Automation](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/automation)**
-
----
-
-# 📚 Documentation
-
-The general documentation area.
-
-This is where I'll keep information that doesn't naturally belong to one of the other sections.
-
-➡️ **[Open Documentation](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/documentation)**
+- [ ] iLO accessible
+- [ ] Firmware identified
+- [ ] Network configured
+- [ ] Administrator access secured
+- [ ] Remote console tested
+- [ ] Hardware monitoring verified
 
 ---
 
-# 🏗️ High-Level Architecture
+# ⚡ Power
+
+| Item | Value |
+|---|---|
+| PSU 1 | TBD |
+| PSU 2 | TBD |
+| PSU Wattage | TBD |
+| Redundant Power | TBD |
+| Power Connections | TBD |
+
+GPU installation will require checking available power capacity.
+
+---
+
+# 🌡️ Cooling
+
+The server will be checked for adequate cooling before GPU workloads are introduced.
+
+Items to verify:
+
+- [ ] Fan configuration
+- [ ] Fan health
+- [ ] CPU temperatures
+- [ ] GPU temperatures
+- [ ] Airflow
+- [ ] GPU cooling
+- [ ] Rack position
+
+---
+
+# 🧩 Server Expansion
+
+Potential future upgrades include:
+
+- Additional RAM
+- Additional storage
+- Second Tesla P40
+- Additional network interfaces
+- Additional storage controllers
+- Other PCIe devices
+
+Any hardware changes should be recorded in this document.
+
+---
+
+# 📋 Hardware Summary
+
+| Category | Current Status |
+|---|---|
+| Server | 🟢 DL380p Gen8 |
+| CPU | 🟡 TBD |
+| RAM | 🟡 TBD |
+| Storage | 🟡 TBD |
+| RAID | 🟡 TBD |
+| GPU | 🟡 Tesla P40 |
+| PCIe | 🟡 Being verified |
+| Network | 🟡 TBD |
+| iLO | 🟡 Being verified |
+| Power | 🟡 TBD |
+| Cooling | 🟡 TBD |
+
+---
+
+# 🔍 Hardware Discovery
+
+Before finalising the virtualisation design, the following information should be collected from the server.
+
+### Proxmox
 
 ```text
-                         INTERNET
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │  Ubiquiti UX7 │
-                    └───────┬───────┘
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │ Managed Switch│
-                    └───────┬───────┘
-                            │
-              ┌─────────────┼─────────────┐
-              │             │             │
-              ▼             ▼             ▼
-        Management      Home Network    Lab Network
-              │                           │
-          ┌───┴───┐                 ┌─────┴─────┐
-          │  iLO  │                 │  Proxmox  │
-          └───────┘                 └─────┬─────┘
-                                          │
-                         ┌────────────────┼────────────────┐
-                         │                │                │
-                         ▼                ▼                ▼
-                       VMs            Containers       Home AI
-                         │                                 │
-                         │                           ┌─────▼─────┐
-                         │                           │ Tesla P40 │
-                         │                           └───────────┘
-                         │
-                  ┌──────▼──────┐
-                  │ Cybersecurity│
-                  │     Lab      │
-                  └──────┬──────┘
-                         │
-                    ┌────▼────┐
-                    │  Wazuh  │
-                    │   SIEM   │
-                    └─────────┘
+lscpu
+free -h
+lsblk
+lspci
+lsusb
+ip -br link
