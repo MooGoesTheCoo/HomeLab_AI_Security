@@ -1,288 +1,54 @@
-# 🏠 HomeLab AI & Security
+# 🔀 VLAN & Network Segmentation
 
-Welcome to my AI driven & designed homelab. This build is designed built and coded mostly by AI (ChatGPT)
-I have signed up on a monthly basis to deliver this project. All being well it wont be the fourth road bridge of projects
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🛠️ Configuration](../../tree/configuration)
 
-From here on out, where possible, the pages and actual build will be created by AI (me doing the copy / pasting for the best part)
+[🗺️ Roadmap](../../tree/roadmap) | [🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery)
 
-
-Regards..
-
-
-
-
-
-This is a project I'm building to bring together **virtualisation, networking, cybersecurity and local AI** into one environment.
-
-The idea is pretty simple:
-
-Take some enterprise hardware I obtained when it was being binned, put it to work, and build a home environment where I can learn, experiment, test things and actually understand how all the different pieces fit together.
-
-It's a work in progress.
-
-Things will change.
-
-Things will break.
-
-Some things will probably be rebuilt several times.
-
-That's part of the project.
+[📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
-# 🧭 Project Overview
+# 🎯 Purpose
 
-The homelab is being built around a central **Proxmox VE** server with managed networking, dedicated GPU resources and a collection of virtual machines and containers.
+This page documents the VLAN and network segmentation architecture for the homelab.
 
-The environment will eventually provide separate areas for:
+The purpose of segmentation is to separate systems according to their role and security requirements rather than operating the entire environment on a single flat network.
 
-- 🖥️ Infrastructure
-- ⚙️ Proxmox virtualisation
-- 🌐 Networking
-- 💾 Storage and backups
-- 🤖 Home AI
-- 🎮 GPU workloads
-- 🛡️ Cybersecurity
-- 📊 SIEM / monitoring
-- 🧪 Security testing
-- ⚡ Automation
+The design will support:
 
-Rather than putting everything into one huge document, each part of the build has its own branch.
-
----
-
-# 🗺️ Build Sections
-
-## 🖥️ Infrastructure
-
-The physical foundation of the homelab.
-
-This section covers the server hardware, physical layout, iLO management, hardware upgrades and the overall architecture.
-
-➡️ **[Open Infrastructure](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/infrastructure)**
-
----
-
-## ⚙️ Proxmox
-
-The virtualisation platform running the lab.
-
-This section covers the Proxmox installation, configuration, networking, storage, VM management and general host configuration.
-
-➡️ **[Open Proxmox](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/proxmox)**
-
----
-
-## 🌐 Networking
-
-The network that ties everything together.
-
-This includes the Ubiquiti UX7, managed switching, VLANs, firewalling, network segmentation and management networks.
-
-➡️ **[Open Networking](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/networking)**
-
----
-
-## 💾 Storage & Backups
-
-Everything related to storing the lab's data.
-
-This section will cover disks, storage configuration, VM storage, backups, snapshots and recovery.
-
-➡️ **[Open Storage](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/storage)**
-
----
-
-## 🖥️ Virtual Machines & Containers
-
-The systems running inside Proxmox.
-
-This section documents the VMs and containers used throughout the lab, including their purpose, resources and configuration.
-
-➡️ **[Open Virtual Machines](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/virtual-machines)**
-
----
-
-# 🤖 Home AI
-
-One of the main goals of the project is to build a local AI environment.
-
-The aim is to run AI workloads locally using dedicated GPU resources rather than having everything depend on cloud services.
-
-This section will cover:
-
-- Local LLMs
-- AI services
-- Model management
-- GPU acceleration
-- AI applications
-- Private document processing
-- Automation
-- Home AI experiments
-
-➡️ **[Open Home AI](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/home-ai)**
-
----
-
-# 🎮 GPU
-
-The GPU side of the project.
-
-The current plan includes NVIDIA Tesla P40 hardware for local AI workloads.
-
-This section will document:
-
-- Tesla P40 installation
-- Power requirements
-- Cooling
-- PCIe configuration
-- Proxmox GPU passthrough
-- Driver installation
-- CUDA
-- GPU testing
-- Adding additional GPUs
-
-➡️ **[Open GPU](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/gpu)**
-
----
-
-# 🛡️ Cybersecurity Lab
-
-A dedicated environment for cybersecurity learning, testing and experimentation.
-
-The idea is to have systems that can generate realistic security telemetry and allow defensive technologies to be tested in a controlled environment.
-
-This section will eventually include:
-
-- Windows systems
-- Linux systems
+- Infrastructure
+- Proxmox management
+- iLO management
 - Security monitoring
-- Endpoint telemetry
-- Detection engineering
-- Attack simulation
-- Purple-team testing
-- SOC tooling
-
-➡️ **[Open Cybersecurity](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/cybersecurity)**
-
----
-
-# 🔎 Wazuh
-
-Wazuh will be the **permanent SIEM/security monitoring platform** for the homelab.
-
-This section will document the Wazuh deployment and how it integrates with the rest of the environment.
-
-It will cover:
-
-- Wazuh server
-- Agents
-- Windows monitoring
-- Linux monitoring
-- File integrity monitoring
-- Vulnerability detection
-- Security events
-- Detection rules
-- Dashboards
-- Alerting
+- Home AI
+- OT/ICS
 - Testing
+- User devices
+- Future services
 
-➡️ **[Open Wazuh](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/wazuh)**
+The VLAN architecture will be implemented progressively.
 
----
-
-# 📊 Monitoring
-
-Keeping an eye on the infrastructure.
-
-This section will document the tools used to monitor:
-
-- Proxmox
-- VMs
-- Containers
-- CPU
-- RAM
-- Storage
-- Network
-- GPU
-- Security events
-- System health
-
-➡️ **[Open Monitoring](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/monitoring)**
+**The VLANs and trunking described below are the target design unless explicitly marked as confirmed.**
 
 ---
 
-# ⚡ Automation
+# ⚠️ Current Network State
 
-The less I have to configure manually, the better.
+The network is currently operating on a **single unsegmented management/network configuration**.
 
-This section contains scripts and automation used to deploy, configure and maintain the lab.
-
-Possible areas include:
-
-- PowerShell
-- Bash
-- Python
-- Proxmox automation
-- VM deployment
-- Configuration
-- Backups
-- Monitoring
-- Security testing
-
-➡️ **[Open Automation](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/automation)**
-
----
-
-# 📚 Documentation
-
-The general documentation area.
-
-This is where I'll keep information that doesn't naturally belong to one of the other sections.
-
-➡️ **[Open Documentation](https://github.com/MooGoesTheCoo/HomeLab_AI_Security/tree/documentation)**
-
----
-
-# 🏗️ High-Level Architecture
+Current Proxmox configuration:
 
 ```text
-                         INTERNET
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │  Ubiquiti UX7 │
-                    └───────┬───────┘
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │ Managed Switch│
-                    └───────┬───────┘
-                            │
-              ┌─────────────┼─────────────┐
-              │             │             │
-              ▼             ▼             ▼
-        Management      Home Network    Lab Network
-              │                           │
-          ┌───┴───┐                 ┌─────┴─────┐
-          │  iLO  │                 │  Proxmox  │
-          └───────┘                 └─────┬─────┘
-                                          │
-                         ┌────────────────┼────────────────┐
-                         │                │                │
-                         ▼                ▼                ▼
-                       VMs            Containers       Home AI
-                         │                                 │
-                         │                           ┌─────▼─────┐
-                         │                           │ Tesla P40 │
-                         │                           └───────────┘
-                         │
-                  ┌──────▼──────┐
-                  │ Cybersecurity│
-                  │     Lab      │
-                  └──────┬──────┘
-                         │
-                    ┌────▼────┐
-                    │  Wazuh  │
-                    │   SIEM   │
-                    └─────────┘
+Proxmox
+   │
+   ▼
+nic7
+   │
+   ▼
+vmbr0
+   │
+   ▼
+192.168.0.100/24
+   │
+   ▼
+192.168.0.1
