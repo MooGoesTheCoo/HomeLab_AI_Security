@@ -1,62 +1,68 @@
 # 🤖 Home AI
 
-This section documents the local AI environment being built inside the homelab.
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🛠️ Configuration](../../tree/configuration)
 
-The goal is to have a capable AI environment running locally on my own hardware rather than relying entirely on cloud-based AI services.
+[🗺️ Roadmap](../../tree/roadmap) | [🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery)
 
-This is one of the main reasons for adding GPU capability to the server.
-
-The environment will run on the Proxmox platform and make use of the NVIDIA Tesla P40.
+[📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
-# 🧠 What is Home AI?
+# 🎯 Purpose
 
-Home AI is the name I'm using for the local AI environment in this homelab.
+The Home AI environment is a dedicated AI platform within the homelab.
 
-The idea is to create a place where I can experiment with:
+It will provide a locally hosted environment for running AI models and supporting applications without making the AI workload dependent on external cloud services.
 
-- Local Large Language Models
-- AI assistants
-- Document processing
-- Knowledge bases
-- Embeddings
-- Vector databases
-- Automation
-- AI agents
-- Local applications
-- GPU-accelerated workloads
+The Home AI environment will be hosted on the HP ProLiant DL380p Gen8 running Proxmox VE.
 
-The environment will be designed so that different AI services can be added or removed without rebuilding the entire platform.
+The design will prioritise:
+
+- Local AI inference
+- GPU acceleration
+- Model hosting
+- AI experimentation
+- Local services
+- Privacy
+- Network isolation
+- Resource control
+- Security
+- Monitoring
+- Future expansion
 
 ---
 
-# 🏗️ High-Level Architecture
+# 🧭 Home AI Architecture
 
-The basic architecture will look like this:
+The planned architecture is:
 
 ```text
-                         INTERNET
+                         HOMELAB
                             │
                             ▼
-                         UX7
+                         Proxmox
                             │
                             ▼
-                     Managed Switch
+                    Home AI VM / Workload
                             │
-                            ▼
-                        Proxmox
-                            │
-                            ▼
-                       Home AI VM
-                            │
-              ┌─────────────┼─────────────┐
-              │             │             │
-              ▼             ▼             ▼
-           AI Engine     Web UI       Databases
-              │
-              ▼
-          CUDA Runtime
-              │
-              ▼
-          Tesla P40
+                  ┌─────────┴─────────┐
+                  │                   │
+                  ▼                   ▼
+             CPU / RAM             GPU
+                                      │
+                                      ▼
+                               NVIDIA Tesla P40
+                                  24 GB VRAM
+                                      │
+                                      ▼
+                              Local AI Runtime
+                                      │
+                         ┌────────────┼────────────┐
+                         │            │            │
+                         ▼            ▼            ▼
+                      Models       Agents       Services
+                         │            │            │
+                         └────────────┼────────────┘
+                                      │
+                                      ▼
+                              Home AI Applications
