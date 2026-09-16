@@ -1,58 +1,46 @@
-# 📚 Documentation
+# 📚 Homelab Documentation
 
-This section contains the working documentation for the homelab build.
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [🛠️ Configuration](../../tree/configuration) | [🗺️ Roadmap](../../tree/roadmap)
 
-The other sections describe what the system is supposed to look like.
-
-This section records what actually happened while building it.
-
-That includes the decisions made, commands used, problems encountered, fixes, screenshots and lessons learned.
+[🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery) | [📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
-# 🎯 Why Have a Documentation Section?
+# 🎯 Purpose
 
-Building a homelab involves a lot of small decisions.
+This page defines how the homelab project is documented.
 
-It's very easy to make a change, get everything working and then forget exactly what was changed six months later.
+The objective is to ensure that the environment can be:
 
-This documentation is intended to prevent that.
+- Understood
+- Built
+- Tested
+- Troubleshot
+- Rebuilt
+- Expanded
+- Audited
 
-The aim is to be able to look back at the project and understand:
+without relying on undocumented knowledge.
 
-- What was installed
-- How it was configured
-- Why it was configured that way
-- What went wrong
-- How it was fixed
-- What was changed
-- What still needs to be done
+The documentation should reflect the **actual state of the homelab**, not assumptions about what has been or will be installed.
 
 ---
 
-# 🏗️ Documentation Structure
+# 📌 Documentation Principles
 
-The documentation will eventually be organised around the different stages of the project.
+The project follows these principles:
+
+### 1. Document the actual environment
+
+Hardware and configuration information should be based on verified output wherever possible.
+
+Examples:
 
 ```text
-Documentation
-│
-├── 🖥️ Infrastructure
-│
-├── 🌐 Networking
-│
-├── ⚙️ Proxmox
-│
-├── 💾 Storage
-│
-├── 🖥️ Virtual Machines
-│
-├── 🎮 GPU
-│
-├── 🤖 Home AI
-│
-├── 🛡️ Cybersecurity
-│
-├── 📊 Monitoring
-│
-└── 💾 Backup & Recovery
+lscpu
+free -h
+lsblk
+lspci
+ip -br link
+ip -br addr
+cat /etc/network/interfaces
