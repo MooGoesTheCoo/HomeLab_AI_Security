@@ -1,80 +1,54 @@
 # 🏗️ Homelab Architecture
 
-This page provides the high-level architecture for the entire homelab.
+This page provides the high-level design of the homelab and shows how the physical hardware, Proxmox, networking, security environments, OT/ICS and Home AI fit together.
 
-The purpose of this page is to show how the different parts of the project fit together.
-
-It is the **map of the homelab**.
-
-Detailed hardware, Proxmox, networking, VLANs, Wazuh, Home AI and OT/ICS configuration are documented on their individual pages.
+The goal is to build a flexible, segmented and security-focused environment that can be expanded over time.
 
 ---
 
-# 🎯 Project Overview
+# 🎯 Project Purpose
 
-The homelab is being built as a self-contained environment for:
+The homelab is being built for:
 
-- Cybersecurity learning
-- SOC development
-- Blue Team activities
-- Red Team testing
+- Cybersecurity and SOC development
+- Blue Team and Red Team testing
 - OT/ICS security
-- Security monitoring
-- SIEM and log analysis
+- Wazuh security monitoring
 - Local AI workloads
 - Virtualisation
-- Network security experimentation
-- Infrastructure and automation testing
-
-The design is intended to allow different environments to operate independently while still allowing controlled communication between them.
+- Network security testing
+- Detection engineering
+- Security experimentation and learning
 
 ---
 
-# 🧱 Core Architecture
-
-The overall architecture is built around four major layers:
+# 🧱 High-Level Architecture
 
 ```text
-┌─────────────────────────────────────────────────────────┐
-│                    PHYSICAL LAYER                       │
-│                                                         │
-│  HP DL380p Gen8                                        │
-│  Ubiquiti UX7                                          │
-│  Managed Switch                                        │
-│  Standalone PCs                                        │
-│  iLO                                                    │
-└───────────────────────────┬─────────────────────────────┘
+                         INTERNET
                             │
                             ▼
-┌─────────────────────────────────────────────────────────┐
-│                  VIRTUALISATION LAYER                   │
-│                                                         │
-│  Proxmox VE                                             │
-│  Virtual Machines                                      │
-│  Containers                                             │
-│  Virtual Networking                                    │
-│  GPU Passthrough                                       │
-└───────────────────────────┬─────────────────────────────┘
+                       UBIQUITI UX7
                             │
                             ▼
-┌─────────────────────────────────────────────────────────┐
-│                     NETWORK LAYER                       │
-│                                                         │
-│  VLANs                                                  │
-│  Trunking                                               │
-│  Firewall / Routing                                     │
-│  Network Segmentation                                   │
-│  Management Networks                                    │
-└───────────────────────────┬─────────────────────────────┘
+                     MANAGED SWITCH
+                            │
+                       VLAN TRUNK
                             │
                             ▼
-┌─────────────────────────────────────────────────────────┐
-│                  WORKLOAD / SECURITY LAYER              │
-│                                                         │
-│  Wazuh                                                  │
-│  Blue Team                                              │
-│  Red Team                                               │
-│  OT / ICS                                               │
-│  Home AI                                                │
-│  Security Testing                                      │
-└─────────────────────────────────────────────────────────┘
+                    HP DL380p Gen8
+                       PROXMOX VE
+                            │
+                          vmbr0
+                            │
+       ┌────────┬──────────┼──────────┬────────┬────────┐
+       │        │          │          │        │
+       ▼        ▼          ▼          ▼        ▼
+    VLAN 10  VLAN 20    VLAN 30    VLAN 40  VLAN 50
+    MGMT     BLUE       HOME AI    OT/ICS   RED TEAM
+       │        │          │          │        │
+      iLO      WAZUH      P40        OT      TESTING
+                                      │
+                                      ▼
+                                   VLAN 60
+                                   OT DMZ
