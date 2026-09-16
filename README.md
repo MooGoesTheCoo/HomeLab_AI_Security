@@ -17,35 +17,52 @@ Rather than guessing specifications, the actual server configuration will be rec
 | Manufacturer | HP | 🟢 |
 | Model | DL380p Gen8 | 🟢 |
 | Form Factor | Rack Server | 🟢 |
-| CPU | TBD | 🟡 |
-| CPU Count | TBD | 🟡 |
-| RAM | TBD | 🟡 |
-| Storage | TBD | 🟡 |
-| RAID Controller | TBD | 🟡 |
+| CPU | 2 × Intel Xeon E5-2650 v2 | 🟢 |
+| CPU Count | 2 | 🟢 |
+| RAM | 256 GB | 🟢 |
+| Storage | ~1.6 TB logical volume | 🟢 |
+| RAID Controller | HP Smart Array P420i | 🟢 |
 | Network | TBD | 🟡 |
-| GPU | Tesla P40 | 🟡 |
+| GPU | Tesla P40 24 GB | 🟡 |
 | iLO | iLO | 🟢 |
 
 ---
 
 # 🧠 CPU
 
-The exact CPU configuration will be recorded after checking the server.
+The server contains two Intel Xeon E5-2650 v2 processors.
 
 | CPU | Model | Cores | Threads | Frequency | Status |
 |---|---|---:|---:|---:|---|
-| CPU 1 | TBD | TBD | TBD | TBD | 🟡 |
-| CPU 2 | TBD | TBD | TBD | TBD | 🟡 |
+| CPU 1 | Intel Xeon E5-2650 v2 | 8 | 16 | 2.60 GHz / 3.40 GHz Turbo | 🟢 |
+| CPU 2 | Intel Xeon E5-2650 v2 | 8 | 16 | 2.60 GHz / 3.40 GHz Turbo | 🟢 |
 
-### CPU Checks
+### CPU Summary
 
-- [ ] CPU model confirmed
-- [ ] Number of CPUs confirmed
-- [ ] Physical cores confirmed
-- [ ] Threads confirmed
-- [ ] Base frequency confirmed
-- [ ] Turbo frequency confirmed
-- [ ] Virtualisation support confirmed
+| Specification | Value |
+|---|---|
+| Physical CPUs | 2 |
+| Physical Cores | 16 |
+| Logical CPUs / Threads | 32 |
+| Threads per Core | 2 |
+| Base Frequency | 2.60 GHz |
+| Maximum Frequency | 3.40 GHz |
+| Architecture | x86_64 |
+| Virtualisation | Intel VT-x |
+| NUMA Nodes | 2 |
+
+### NUMA Layout
+
+```text
+NUMA Node 0
+├── CPU 1
+├── CPUs 0-7
+└── CPUs 16-23
+
+NUMA Node 1
+├── CPU 2
+├── CPUs 8-15
+└── CPUs 24-31
 
 ---
 
