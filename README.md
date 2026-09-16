@@ -13,21 +13,21 @@ The aim is to build it properly from the beginning, document the configuration a
 The Proxmox host is running on the HP ProLiant DL380p Gen8.
 
 ```text
-┌───────────────────────────────────────┐
-│          HP DL380p Gen8               │
-│                                       │
-│             Proxmox VE                │
-│                                       │
-├───────────────────────────────────────┤
-│                                       │
-│  Virtual Machines                     │
-│                                       │
-│  Containers                           │
-│                                       │
-│  GPU Passthrough                      │
-│                                       │
-│  Virtual Networking                   │
-│                                       │
-│  Storage                              │
-│                                       │
-└───────────────────────────────────────┘
+┌────────────────────────────────────────────┐
+│              HP DL380p Gen8                │
+│                                            │
+│                Proxmox VE                  │
+│                                            │
+├────────────────────────────────────────────┤
+│                                            │
+│  Virtual Machines                          │
+│                                            │
+│  Containers                                │
+│                                            │
+│  GPU Passthrough                           │
+│                                            │
+│  Virtual Networking                        │
+│                                            │
+│  Storage                                   │
+│                                            │
+└────────────────────────────────────────────┘
