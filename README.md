@@ -1,33 +1,44 @@
 # 🎮 GPU
 
-This section documents the GPU side of the homelab.
+[🏠 Home](../../) | [🏗️ Architecture](../../tree/architecture) | [🌐 Networking](../../tree/networking) | [🔀 VLANs](../../tree/VLAN-%26-Network-Segmentation) | [⚙️ Proxmox](../../tree/proxmox) | [🖥️ Hardware](../../tree/hardware-inventory) | [🛠️ Configuration](../../tree/configuration)
 
-The main reason for adding a GPU is to give the Home AI environment enough processing power to run local AI workloads.
+[🗺️ Roadmap](../../tree/roadmap) | [🚀 Deployment](../../tree/deployment) | [🔐 Access Management](../../tree/access-management) | [🧪 Testing Lab](../../tree/testing-lab) | [🏭 OT/ICS](../../tree/ot-ics) | [📚 Documentation](../../tree/documentation) | [💾 Backup & DR](../../tree/backup-disaster-recovery)
 
-The current plan is to use an **NVIDIA Tesla P40** in the HP ProLiant DL380p Gen8.
-
-This is one of the more interesting parts of the build because getting an older enterprise server to work with modern GPU workloads involves quite a few things to consider.
+[📊 Monitoring](../../tree/monitoring) | [🛡️ Cybersecurity](../../tree/cybersecurity) | [🤖 Home AI](../../tree/home-ai) | [🎮 GPU](../../tree/gpu) | [🖥️ Virtual Machines](../../tree/virtual-machines) | [💽 Storage](../../tree/storage) | [🏗️ Infrastructure](../../tree/infrastructure)
 
 ---
 
-# 🎯 What is the GPU for?
+# 🎯 Purpose
 
-The primary purpose of the GPU is **local AI**.
+This page documents the GPU infrastructure for the homelab.
 
-Instead of relying entirely on cloud-based AI services, I want to experiment with running models locally inside the homelab.
+The primary purpose of the GPU is to provide hardware acceleration for the **Home AI** environment running on the HP ProLiant DL380p Gen8.
 
-The GPU will provide acceleration for workloads that benefit from dedicated GPU processing.
+The GPU design must account for:
 
-The initial use case is:
+- PCIe slot availability
+- PCIe bandwidth
+- GPU passthrough
+- Power requirements
+- Server cooling
+- Physical clearance
+- Proxmox compatibility
+- NVIDIA driver support
+- AI workload requirements
+- Future GPU expansion
+
+---
+
+# 🖥️ GPU Host
+
+The GPU will be installed in the primary homelab server.
 
 ```text
-                    Proxmox
-                       │
-                       ▼
-                  Home AI VM
-                       │
-                       ▼
-                  Tesla P40
-                       │
-                       ▼
-                 Local AI Models
+Server:
+HP ProLiant DL380p Gen8
+
+Hypervisor:
+Proxmox VE
+
+Hostname:
+pve
