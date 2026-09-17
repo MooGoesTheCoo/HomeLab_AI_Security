@@ -1,168 +1,179 @@
-<div align="center">
+# 🏠 HomeLab AI & Security
 
-<img src="assets/moogoesthecoo-logo.png" alt="MooGoesTheCoo Homelab Logo" width="500">
+Welcome to **MooGoesTheCoo — HomeLab AI & Security**.
 
-# 🐮 MooGoesTheCoo — HomeLab AI & Security
+This is a real-world homelab project, but there is a bit of an experiment going on behind it.
 
-### Enterprise Hardware • Proxmox • Networking • Cybersecurity • OT/ICS • Local AI
+## 🤖 The Experiment
 
-**Build it. Break it. Learn it. Secure it.**
+The main objective of this project is to find out:
 
-</div>
+> **How much of a real homelab can AI actually specify, design, document and help build from start to finish?**
+
+The intention is to use AI heavily throughout the project to see whether it can handle **most, if not all, aspects of designing and building the lab**.
+
+That includes areas such as:
+
+- 🏗️ Overall architecture
+- 🖥️ Hardware selection and specification
+- ⚙️ Proxmox configuration
+- 🌐 Network design
+- 🔀 VLAN and network segmentation
+- 🔐 Security architecture
+- 🧪 Testing environments
+- 🛡️ Cybersecurity tooling
+- 🔎 SIEM and monitoring
+- 🏭 OT/ICS lab design
+- 🤖 Home AI infrastructure
+- 🎮 GPU configuration
+- 💾 Storage and backup
+- 🚀 Deployment procedures
+- ⚡ Automation
+- 📚 Documentation
+- 🔧 Troubleshooting
+- 🧪 Testing and validation
+
+The human part of the project is deliberately kept relatively simple:
+
+**AI proposes, specifies, explains and documents.  
+I build it, configure it, test it and report what actually happens.**
+
+The objective is not to blindly follow whatever AI suggests.
+
+If AI gets something wrong, the mistake becomes part of the experiment.
+
+If a configuration doesn't work, we troubleshoot it.
+
+If the architecture needs changing, we change it.
+
+If something turns out to be a terrible idea, we'll document that too.
+
+And if this whole thing eventually turns into the **Fourth Road Bridge of homelab projects**, at least we'll have the evidence to prove it. 😄
 
 ---
 
-## 🏠 About This Project
+## 🧠 Why This Project Exists
 
-This repository documents the build of my personal homelab.
+This isn't intended to be a theoretical AI exercise.
 
-The project brings together:
+The hardware is real.
 
-- 🖥️ Enterprise server hardware
-- ⚙️ Proxmox virtualisation
-- 🌐 Managed networking and VLAN segmentation
-- 🛡️ Cybersecurity and security monitoring
-- 🔎 Wazuh
-- 🤖 Local AI and Home AI workloads
-- 🎮 NVIDIA Tesla P40 GPU acceleration
-- 🧪 Security testing and attack simulation
-- 🏭 OT/ICS learning and experimentation
-- 💾 Storage, backup and recovery
-- 📊 Infrastructure monitoring
-- ⚡ Automation
+The network is real.
 
-The goal is not simply to build a collection of virtual machines.
+The configuration is real.
 
-The goal is to build an environment where I can **learn, experiment, break things, investigate what happened, rebuild them and understand the technology behind them.**
+The mistakes will be real.
 
-This is a real homelab built around physical enterprise hardware and progressively developed through testing and experimentation.
+The objective is to see whether AI can move beyond simply answering questions and actually contribute to the development of a functioning technical environment.
 
-The project is a **work in progress**.
+The project therefore provides a practical test of AI across:
+
+**Planning → Specification → Design → Configuration → Deployment → Testing → Troubleshooting → Documentation**
+
+The results will be documented throughout the project.
+
+---
+
+## 🧑‍💻 What I Actually Do
+
+AI is being used heavily to help build and document this project, but I am still the person operating the lab.
+
+My role is to:
+
+- Purchase or source the required hardware
+- Physically build the infrastructure
+- Perform the actual configuration
+- Run the commands and scripts
+- Test the proposed designs
+- Validate whether things actually work
+- Provide real-world results back to the AI
+- Make the physical changes to the environment
+- Decide whether a proposed change is safe to implement
+
+In other words:
+
+> **AI can design the bridge. I'm the one standing underneath it when we test it.**
+
+That is an important part of the experiment.
+
+---
+
+## 🧪 The Measure of Success
+
+The project isn't simply successful because AI produces a lot of documentation.
+
+The real test is whether the resulting environment actually works.
+
+A successful AI-generated solution therefore needs to survive:
+
+1. **Specification**
+2. **Implementation**
+3. **Testing**
+4. **Troubleshooting**
+5. **Security validation**
+6. **Operational use**
+
+Where something fails, the failure will be documented rather than hidden.
+
+That includes:
+
+- Incorrect assumptions
+- Bad configurations
+- Broken scripts
+- Hardware limitations
+- Networking problems
+- Security issues
+- Resource constraints
+- AI-generated mistakes
+
+This makes the repository as much a **record of the experiment** as it is documentation for the finished homelab.
+
+---
+
+## 🐮 The Fourth Road Bridge Test
+
+There is one additional rule for this project:
+
+**Don't over-engineer the bloody thing.**
+
+The UK has a long history of projects that become vastly more complicated, expensive or delayed than originally intended.
+
+This homelab is deliberately testing whether AI can avoid doing the same thing.
+
+AI will therefore be challenged to produce solutions that are:
+
+- Practical
+- Affordable
+- Reproducible
+- Secure
+- Maintainable
+- Appropriate for the available hardware
+- As simple as possible without compromising the objective
+
+If the AI proposes something ridiculous, we'll call it out.
+
+If I ask for something ridiculous, AI should call me out too.
+
+The goal is to build a working lab — **not another Fourth Road Bridge.**
+
+---
+
+## 🚧 Project Status
+
+**Status: Work in Progress**
+
+This project is being built progressively.
 
 Things will change.
 
 Things will break.
 
-Some components will probably be rebuilt.
+Things will be rebuilt.
 
-That is part of the learning process.
+Some AI-generated ideas will work first time.
 
----
+Some won't.
 
-# 🧭 Project Navigation
+That is the point.
 
-| Area | Documentation |
-|---|---|
-| 🏠 Project Home | [README](../../) |
-| 🏗️ Architecture | [Architecture](../../tree/architecture) |
-| 🌐 Networking | [Networking](../../tree/networking) |
-| 🔀 VLAN & Segmentation | [VLAN & Network Segmentation](../../tree/VLAN-%26-Network-Segmentation) |
-| ⚙️ Proxmox | [Proxmox](../../tree/proxmox) |
-| 🖥️ Hardware | [Hardware Inventory](../../tree/hardware-inventory) |
-| 🛠️ Configuration | [Configuration](../../tree/configuration) |
-| 🗺️ Roadmap | [Roadmap](../../tree/roadmap) |
-| 🚀 Deployment | [Deployment](../../tree/deployment) |
-| 🔐 Access Management | [Access Management](../../tree/access-management) |
-| 🧪 Testing Lab | [Testing Lab](../../tree/testing-lab) |
-| 🏭 OT/ICS | [OT/ICS](../../tree/ot-ics) |
-| 📚 Documentation | [Documentation](../../tree/documentation) |
-| 💾 Backup & Disaster Recovery | [Backup & DR](../../tree/backup-disaster-recovery) |
-| 📊 Monitoring | [Monitoring](../../tree/monitoring) |
-| 🛡️ Cybersecurity | [Cybersecurity](../../tree/cybersecurity) |
-| 🤖 Home AI | [Home AI](../../tree/home-ai) |
-| 🎮 GPU | [GPU](../../tree/gpu) |
-| 🖥️ Virtual Machines | [Virtual Machines](../../tree/virtual-machines) |
-| 💽 Storage | [Storage](../../tree/storage) |
-| 🏗️ Infrastructure | [Infrastructure](../../tree/infrastructure) |
-
----
-
-# 🎯 Project Objectives
-
-The homelab is being developed around several main objectives.
-
-### 1. Learn
-
-Build practical experience with technologies used in real-world infrastructure, cybersecurity, virtualisation, networking and OT environments.
-
-### 2. Experiment
-
-Create isolated environments where new technologies can be tested without putting the normal home network at risk.
-
-### 3. Generate Real Telemetry
-
-Create realistic systems, workloads and security activity that produce logs and events which can then be investigated.
-
-### 4. Build Defensive Security Skills
-
-Use the environment to practise:
-
-- Security monitoring
-- Detection engineering
-- Incident investigation
-- Log analysis
-- Threat hunting
-- Endpoint monitoring
-- Network security
-- SIEM operations
-- Purple-team exercises
-
-### 5. Learn OT/ICS Security
-
-Build a separate environment for learning how operational technology and industrial control systems differ from traditional IT environments.
-
-### 6. Run AI Locally
-
-Develop a local AI environment capable of running models and AI applications without relying entirely on cloud services.
-
-### 7. Automate
-
-Where practical, automate deployment, configuration, monitoring and repeatable tasks.
-
----
-
-# 🏗️ Core Infrastructure
-
-The physical foundation of the project is an **HP ProLiant DL380p Gen8** server running Proxmox VE.
-
-### Current Server
-
-| Component | Specification |
-|---|---|
-| Server | HP ProLiant DL380p Gen8 |
-| Hypervisor | Proxmox VE |
-| CPU | 2 × Intel Xeon E5-2650 v2 |
-| Physical Cores | 16 |
-| Logical CPUs | 32 |
-| RAM | 256 GB |
-| Storage | ~1.6 TB |
-| Storage Controller | HP Smart Array P420i |
-| Storage Configuration | RAID-5 |
-| Network Interfaces | Multiple onboard/server NICs |
-| Management | HP iLO |
-| Planned GPU | NVIDIA Tesla P40 24 GB |
-
-The server provides the compute and virtualisation platform for the majority of the lab.
-
-➡️ **[View Infrastructure](../../tree/infrastructure)**
-
-➡️ **[View Hardware Inventory](../../tree/hardware-inventory)**
-
-➡️ **[View Proxmox Configuration](../../tree/proxmox)**
-
----
-
-# 🌐 Network Architecture
-
-The network is being developed around a **Ubiquiti UX7**, managed switching and VLAN-based segmentation.
-
-The existing Proxmox host currently operates on:
-
-```text
-Proxmox
-    │
-    └── nic7
-          │
-          └── vmbr0
-                │
-                └── 192.168.0.100/24
+The repository will document the journey from the initial specification through to the operational homelab.
