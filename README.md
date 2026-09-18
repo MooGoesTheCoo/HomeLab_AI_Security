@@ -104,7 +104,7 @@ The switch will also provide the Layer-2 foundation for the planned VLAN and net
 | Model | UniFi Switch Lite 8 PoE |
 | UK Model | USW-Lite-8-PoE-UK |
 | Quantity | 1 |
-| Purchase Price | £85.00 |
+| Purchase Price | £deleted |
 | Status | 🟢 Received — awaiting deployment/configuration |
 | Role | Primary managed access switch |
 
@@ -155,7 +155,7 @@ The following UniFi Ethernet patch cables have been purchased for the homelab ne
 | Speed Rating | 10 GbE |
 | Length | 8 m |
 | Quantity | 2 |
-| Unit Price | £14.40 |
+| Unit Price | £Deleted |
 | Status | 🟢 Received |
 
 ### Planned Use
@@ -173,7 +173,7 @@ The longer cables will be used for physical connections where equipment is posit
 | Speed Rating | 10 GbE |
 | Length | 5 m |
 | Quantity | 1 |
-| Unit Price | £5.60 |
+| Unit Price | £Deleted |
 | Status | 🟢 Received |
 
 ---
@@ -187,7 +187,7 @@ The longer cables will be used for physical connections where equipment is posit
 | Speed Rating | 10 GbE |
 | Length | 1 m |
 | Quantity | 1 |
-| Unit Price | £3.00 |
+| Unit Price | £Deleted |
 | Status | 🟢 Received |
 
 ### Cable Note
