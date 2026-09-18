@@ -72,7 +72,7 @@ The objective is to create a practical environment for:
 >
 > **Purchase price: £deleted**
 >
-> **Status: 🟢 Purchased — awaiting arrival/deployment/configuration**
+> **Status: 🟢 Purchased — awaiting deployment/configuration**
 
 | Specification | Details |
 |---|---|
@@ -86,6 +86,10 @@ The objective is to create a practical environment for:
 | Role | Core managed access switch for the homelab |
 | Status | 🟢 Purchased |
 | Purchase Price | deleted |
+
+
+<img width="1672" height="941" alt="3acc830e-2f6c-4f3d-a2bb-a85d88debf5b" src="https://github.com/user-attachments/assets/c393fce2-d180-4ab5-b15f-c448d494593b" />
+
 
 ### Planned Physical Role
 
